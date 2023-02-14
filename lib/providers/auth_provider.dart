@@ -175,6 +175,8 @@ log(userCredential.toString());
             .then((value) {
                Navigator.pushReplacementNamed(context,Router1.homeScreen );
             });
+            
+savedonLocal();
        loading=false;
         notifyListeners();
         

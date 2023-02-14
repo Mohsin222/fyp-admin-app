@@ -98,6 +98,26 @@ then((value) {
                 child:Text('Delete Product',style: TextStyle(color: Colors.white)) ,
               )
             ),
+
+
+            //delete product
+              PopupMenuItem<String>(
+      
+              child: InkWell(
+                onTap: (){
+                  FirebaseFirestore.instance.collection("foodItems")
+                 .where("name",isEqualTo: foodItem.name).get().then((querySnapshot ) {
+
+               
+                 });
+
+               showDialog(context: context, builder: (context){
+  return DiscountDialog(foodItem: foodItem,);
+});
+                },
+                child:Text('Delete Product',style: TextStyle(color: Colors.white),) ,
+              )
+            ),
             ]
     );
   }
