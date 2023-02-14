@@ -1,8 +1,10 @@
 
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_app/providers/find_food_provider.dart';
+import 'package:fyp_app/views/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../components/backbtn.dart';
@@ -15,7 +17,19 @@ class DealsDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:AppBar(leading: BackBtn(),backgroundColor: Theme.of(context).cardColor,),
+        appBar:AppBar(leading: BackBtn(),backgroundColor: Theme.of(context).cardColor,
+        
+        actions: [
+          IconButton(onPressed: (){
+
+                   FirebaseFirestore.instance.collection("foodItems")
+                 .doc(dealModel.uid).delete().then((value) {
+                    Provider.of<FindFood>(context,listen: false).getListOfDeals();
+                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                 },);
+          }, icon: Icon(Icons.delete,color: Colors.red,size: 22,))
+        ],
+        ),
         body: Consumer<FindFood>(builder: (context, value, child) {
           return Column(
             children: [

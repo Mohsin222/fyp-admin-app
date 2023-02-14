@@ -181,6 +181,8 @@ body: Container(child: Form(
                                  
                                           child: TextFormField(
                                             keyboardType: TextInputType.multiline,
+
+                                            style: TextStyle(color: Colors.white),
                                         
                                           // minLines: null,
                                           maxLines: 10,

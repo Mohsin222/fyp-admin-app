@@ -191,7 +191,7 @@ GlobalKey<FormState> _addFoodKey = GlobalKey<FormState>();
                                  
                                           child: TextFormField(
                                             keyboardType: TextInputType.multiline,
-                                        
+                                        style: TextStyle(color: Colors.white),
                                           // minLines: null,
                                           maxLines: 10,
                                             decoration:textFieldDecoration.copyWith(

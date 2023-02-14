@@ -87,7 +87,6 @@ Future addItem()async{
 loading=true;
 notifyListeners();
     var uuid = Uuid();
-    var id = uuid.v1();
 var imgData = await uploadFile();
   FoodItem foodItem =FoodItem(
     name: name,
@@ -95,7 +94,7 @@ var imgData = await uploadFile();
     description: description,
     picture: imgData,
 available: true,
-uid:id,
+uid: uuid.v1(),
 category: fooditemValue,
 foodType: foodtp,
 popular: true,
@@ -109,10 +108,9 @@ String? data;
 if(imgData !=null){
  await FirebaseFirestore.instance
           .collection("foodItems")
-          .doc(id)
-          .set(foodItem.toMap())
+          .add(foodItem.toMap())
           .then((value) {
-            data=value as String;
+            data=value.toString();
 name='';
 description='';
 price=0;

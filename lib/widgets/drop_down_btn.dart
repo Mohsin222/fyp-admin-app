@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:fyp_app/constants/routes.dart';
 import 'package:fyp_app/models/food_item.dart';
 import 'package:fyp_app/providers/find_food_provider.dart';
+import 'package:fyp_app/views/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'discount_Dialog.dart';
@@ -106,14 +107,14 @@ then((value) {
               child: InkWell(
                 onTap: (){
                   FirebaseFirestore.instance.collection("foodItems")
-                 .where("name",isEqualTo: foodItem.name).get().then((querySnapshot ) {
+                 .doc(foodItem.uid).delete().then((value) {
 
-               
-                 });
+                  Provider.of<FindFood>(context,listen: false).getListOfFood();
+                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                 },);
 
-               showDialog(context: context, builder: (context){
-  return DiscountDialog(foodItem: foodItem,);
-});
+      
+
                 },
                 child:Text('Delete Product',style: TextStyle(color: Colors.white),) ,
               )
