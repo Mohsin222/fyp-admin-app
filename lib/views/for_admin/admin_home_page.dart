@@ -83,6 +83,7 @@ class AdminHomeScreen extends StatelessWidget {
                       }, icon: Icon(Icons.logout_outlined,color: Colors.white,))
       ],
     ),
+    //bottom bar
       bottomNavigationBar: OldBottomBar(),
       // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       backgroundColor: Color(0xfff262434),

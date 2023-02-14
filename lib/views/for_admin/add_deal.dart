@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:fyp_app/components/button2.dart';
 import 'package:fyp_app/constants/routes.dart';
 import 'package:fyp_app/providers/add_dealprovider.dart';
+import 'package:fyp_app/providers/find_food_provider.dart';
 import 'package:fyp_app/widgets/dialog.dart';
 import 'package:provider/provider.dart';
 
@@ -228,11 +229,13 @@ borderSide: BorderSide(color: Colors.white)
                                   debugPrint('valid');
                   
                           if(foodProvider.file !=null){
-                             var data=     await   foodProvider.addItem();
-                           if(data !=null){
-                            // ignore: use_build_context_synchronously
-                            Navigator.popAndPushNamed(context, Router1.homeScreen);
-                          }
+                            //  var data= 
+                                 await   foodProvider.addItem(context);
+                              Provider.of<FindFood>(context,listen: false).getListOfDeals();
+                          //  if(data !=null){
+                          //   // ignore: use_build_context_synchronously
+                          //   Navigator.popAndPushNamed(context, Router1.homeScreen);
+                          // }
                            }else{
                     showDialog(context: context, builder: (context){
     

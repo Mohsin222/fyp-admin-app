@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fyp_app/components/backbtn.dart';
 import 'package:fyp_app/models/contact_us.dart';
+import 'package:fyp_app/widgets/bottom_bar.dart';
 
 class CustomerQueryPage extends StatelessWidget {
   const CustomerQueryPage({super.key});
@@ -12,6 +13,8 @@ class CustomerQueryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+          //bottom bar
+      bottomNavigationBar: OldBottomBar(),
       appBar: AppBar(
         leading: BackBtn(),
         backgroundColor: Theme.of(context).cardColor,

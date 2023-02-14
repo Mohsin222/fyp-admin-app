@@ -8,6 +8,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fyp_app/views/user_detail.dart';
 
 import '../models/userModel.dart';
+import '../widgets/bottom_bar.dart';
 
 class TablesDetailScreen extends StatefulWidget {
   const TablesDetailScreen({super.key});
@@ -22,6 +23,8 @@ class _TablesDetailScreenState extends State<TablesDetailScreen> {
     return DefaultTabController(
          length: 2,
       child: Scaffold(
+            //bottom bar
+      bottomNavigationBar: OldBottomBar(),
         appBar: AppBar(
           title: Text('Booked Tables',style: Theme.of(context).textTheme.headline3,),
           centerTitle: true,

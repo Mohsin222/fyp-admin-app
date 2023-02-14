@@ -17,6 +17,7 @@ class TablesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(title: Text('Tables')),
 
       body: Consumer<AuthProvider>(

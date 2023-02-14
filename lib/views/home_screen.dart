@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fyp_app/views/viewallfood.dart';
 import 'package:fyp_app/widgets/appbar.dart';
+import 'package:fyp_app/widgets/bottom_bar.dart';
 import 'package:fyp_app/widgets/category_list.dart';
 
 import 'package:page_transition/page_transition.dart';
@@ -30,8 +31,11 @@ ScrollController scrollController =ScrollController();
   Widget build(BuildContext context) {
     final findfood =Provider.of<FindFood>(context,listen: false);
     // findfood.getListOfFood();
+    // Provider.of<FindFood>(context,listen: false).getListOfDeals();
+    // Provider.of<FindFood>(context,listen: false).getListOfFood();
     
     return Scaffold(
+
       // backgroundColor: Color.fromRGBO(255, 255, 255, 1),
 
     //  bottomNavigationBar: AddWidget(),
@@ -52,6 +56,9 @@ ScrollController scrollController =ScrollController();
       // drawer: Container(
       //   width: MediaQuery.of(context).size.width/1.5,
       //   child: DrawerWidget()),
+
+          //bottom bar
+      bottomNavigationBar: OldBottomBar(),
       
 
       body: Container(

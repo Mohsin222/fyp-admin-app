@@ -19,6 +19,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../components/text_field.dart';
 import '../../constants/routes.dart';
+import '../../providers/find_food_provider.dart';
 
 class AddFood extends StatelessWidget {
 
@@ -230,11 +231,13 @@ GlobalKey<FormState> _addFoodKey = GlobalKey<FormState>();
                                   debugPrint('valid');
                     
                             if(foodProvider.file !=null){
-                               var data=     await   foodProvider.addItem();
-                             if(data !=null){
-                              // ignore: use_build_context_synchronously
-                              Navigator.popAndPushNamed(context, Router1.homeScreen);
-                            }
+                              //  var data=
+                                    await   foodProvider.addItem(context);
+                                           Provider.of<FindFood>(context,listen: false).getListOfFood();
+                            //  if(data !=null){
+                            //   // ignore: use_build_context_synchronously
+                            //   Navigator.popAndPushNamed(context, Router1.homeScreen);
+                            // }
                              }else{
                       showDialog(context: context, builder: (context){
     

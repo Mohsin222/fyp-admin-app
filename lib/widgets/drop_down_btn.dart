@@ -102,23 +102,23 @@ then((value) {
 
 
             //delete product
-              PopupMenuItem<String>(
+            //   PopupMenuItem<String>(
       
-              child: InkWell(
-                onTap: (){
-                  FirebaseFirestore.instance.collection("foodItems")
-                 .doc(foodItem.uid).delete().then((value) {
+            //   child: InkWell(
+            //     onTap: (){
+            //       FirebaseFirestore.instance.collection("foodItems")
+            //      .doc(foodItem.uid).delete().then((value) {
 
-                  Provider.of<FindFood>(context,listen: false).getListOfFood();
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
-                 },);
+            //       Provider.of<FindFood>(context,listen: false).getListOfFood();
+            //        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+            //      },);
 
       
 
-                },
-                child:Text('Delete Product',style: TextStyle(color: Colors.white),) ,
-              )
-            ),
+            //     },
+            //     child:Text('Delete Product',style: TextStyle(color: Colors.white),) ,
+            //   )
+            // ),
             ]
     );
   }

@@ -4,6 +4,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_app/providers/find_food_provider.dart';
+import 'package:fyp_app/views/for_admin/admin_home_page.dart';
 import 'package:fyp_app/views/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -22,10 +23,18 @@ class DealsDetailScreen extends StatelessWidget {
         actions: [
           IconButton(onPressed: (){
 
-                   FirebaseFirestore.instance.collection("foodItems")
+                   FirebaseFirestore.instance.collection("deals")
                  .doc(dealModel.uid).delete().then((value) {
                     Provider.of<FindFood>(context,listen: false).getListOfDeals();
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                        ScaffoldMessenger.of(context).showSnackBar(
+   SnackBar(
+      backgroundColor: Colors.green,
+      duration: Duration(seconds: 2),
+       content: Text('Deal deleted successfully'),
+       
+     ),
+    );
+                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>AdminHomeScreen()));
                  },);
           }, icon: Icon(Icons.delete,color: Colors.red,size: 22,))
         ],

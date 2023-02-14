@@ -8,6 +8,8 @@ import 'package:fyp_app/models/dealModel.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
+import '../constants/routes.dart';
+
 class AddDealProvider extends DisposableProvider{
 
 
@@ -61,10 +63,11 @@ String? picture;
 //add food item to database
 bool loading=false;
 
-Future addItem()async{
+Future addItem(BuildContext context)async{
 loading=true;
 notifyListeners();
     var uuid = Uuid();
+    var id =uuid.v1();
 var imgData = await uploadFile();
 DealModel dealModel =DealModel(
   dealNo: dealNo,
@@ -75,16 +78,17 @@ DealModel dealModel =DealModel(
   price: price,
   discount: 0,
   picture: url,
-  uid: uuid.v1(),
+  uid: id,
 );
 
 String? data;
 if(imgData !=null){
  await FirebaseFirestore.instance
           .collection("deals")
-          .add(dealModel.toMap())
+          .doc(id)
+          .set(dealModel.toMap())
           .then((value) {
-            data=value.toString();
+            // data=value.toString();
 
 file=null;
 item1: '';
@@ -95,6 +99,9 @@ item1: '';
 
 
 loading=false;
+
+ Navigator.popAndPushNamed(context, Router1.homeScreen);
+ 
 notifyListeners();
 
 
